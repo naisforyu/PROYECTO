@@ -1,3 +1,12 @@
+section {
+  display: none;
+}
+
+#overview {
+  display: flex; /* sección inicial */
+}
+
+
 :root {
   --bg: #f4f6f8;
   --sidebar-bg: #1f2a35;
@@ -50,12 +59,15 @@ body {
   background: #2c3a47;
   color: #fff;
 }
-
 /* Main */
 .main-content {
   flex: 1;
   padding: 2rem;
+  width: 100%;
+  max-width: 1200px; /* ancho centrado y bonito */
+  margin: 0 auto;
 }
+
 
 .topbar {
   display: flex;
@@ -99,6 +111,7 @@ body {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display:block;
 }
 
 /* Main grid */
@@ -133,6 +146,7 @@ body {
 /* Animaciones */
 .card, .chart, .table, .panel {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
 }
 
 .card:hover, .chart:hover, .table:hover, .panel:hover {
@@ -142,13 +156,15 @@ body {
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1c1f23;
-    --sidebar-bg: #14181c;
-    --primary: #5c8cd6;
-    --text: #e2e6ea;
-    --card-bg: #22272e;
-  }
+ :root.dark {
+--bg: #0f1115;
+--sidebar-bg: #0b0c0f;
+--sidebar-text: #e5e9f0;
+--text: #e5e9f0;
+--card-bg: #1a1c22;
+--card-border: #2a2d33;
+--accent: #7ca7ff;
+}
 }
 
 /* Responsive */
@@ -181,3 +197,153 @@ body {
     gap: 1rem;
   }
 }
+
+.logo{
+  background-color: #1f2a35;
+  border: none;
+  cursor: pointer;
+}
+.tienda h2 {
+font-size: 1.6rem;
+margin-bottom: 1.5rem;
+}
+.productos-grid {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: flex-start;
+gap: 1.5rem;
+width: 100%;
+padding: 1rem 0;
+}
+.producto-item {
+background: var(--card-bg);
+padding: 1rem;
+border-radius: 12px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+transition: transform .2s ease, box-shadow .2s ease;
+}
+.producto-item:hover {
+transform: translateY(-4px);
+box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+.img-placeholder {
+width: 100%;
+height: 140px;
+background: #d9e0e7;
+border-radius: 10px;
+margin-bottom: 1rem;
+}
+.producto-item input[type="number"] {
+width: 60px;
+padding: .3rem;
+border-radius: 6px;
+border: 1px solid #aaa;
+}
+ :root{
+      --cfg-bg: #fff;
+      --cfg-text: #1f2937;
+      --cfg-border: #e6e9ee;
+      --cfg-accent: #3a6ea5;
+    }
+    :root.dark {
+--bg: #0f1115;
+--sidebar-bg: #0b0c0f;
+--sidebar-text: #e5e9f0;
+--text: #e5e9f0;
+--card-bg: #1a1c22;
+--card-border: #2a2d33;
+--accent: #7ca7ff;
+}
+
+    /* Config menu */
+    .config-menu {
+      background: var(--cfg-bg);
+      color: var(--cfg-text);
+      padding: 1.25rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .config-menu h2 {
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+
+    .config-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .config-btn {
+      width: 100%;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.6rem 0.9rem;
+      background: transparent;
+      border: 1px solid var(--cfg-border);
+      border-radius: 10px;
+      cursor: pointer;
+      color: var(--cfg-text);
+      font-size: 0.95rem;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      text-align: left;
+    }
+
+    .config-btn span.icon {
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.04);
+      font-size: 1.05rem;
+    }
+
+    .config-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      background: rgba(0,0,0,0.02);
+    }
+
+    /* Report form */
+    .report-form {
+      margin-top: 0.8rem;
+      border-top: 1px dashed var(--cfg-border);
+      padding-top: 0.8rem;
+      display: none;
+      gap: .5rem;
+    }
+
+    .report-form h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    .report-form textarea {
+      width: 100%;
+      resize: vertical;
+      min-height: 80px;
+      padding: .6rem;
+      border-radius: 8px;
+      border: 1px solid var(--cfg-border);
+      background: transparent;
+      color: var(--cfg-text);
+    }
+
+    .report-form .send {
+      margin-top: .5rem;
+      background: var(--cfg-accent);
+      color: #fff;
+      border: none;
+      padding: .5rem .8rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }

@@ -7,10 +7,15 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style2.css" />
 </head>
+
 <body>
+
   <!-- Barra lateral -->
   <aside class="sidebar">
-    <div class="logo">MiEmpresa</div>
+    <div class="logo">
+      <button class="logo">Micuenta</button>
+    </div>
+
     <nav class="menu">
       <a href="#overview">Resumen</a>
       <a href="#ventas">Ventas</a>
@@ -21,36 +26,199 @@
 
   <!-- Contenedor principal -->
   <main class="main-content">
+
     <!-- Encabezado superior -->
     <header class="topbar">
-      <h1> Bienvenido a nuestra tienda virtual</h1>
+      <h1>Bienvenido a nuestra tienda virtual</h1>
       <div class="acciones">
         <input type="search" placeholder="Buscar..." />
         <button>Perfil</button>
       </div>
     </header>
 
-   
+    <!-- Sección principal: RESUMEN -->
     <section class="ofertas" id="overview">
-      <div class="card">Conoce nuestros productos</div>
-      <div class="card">Descubre maravillosas ofertas</div>
-      <div class="card">Obtén asesorías y tutoriales</div>
-      <div class="card"></div>
+      <div class="card"><div class="img-placeholder"></div>  Conoce nuestros productos</div>
+      <div class="card" ><div class="img-placeholder"></div>Descubre maravillosas ofertas</div>
+      <div class="card"><div class="img-placeholder"></div>Obtén asesorías y tutoriales</div>
     </section>
 
-    <!-- Gráfica y tabla principal -->
+    <!-- Tabla en overview -->
     <section class="content-grid">
-      <div class="table">Tabla de productos / ventas recientes</div>
+      <div class="table"> contáctanos en redes
+        
+      </div>
     </section>
 
-    <!-- Panel adicional -->
-    <section class="extra-panels">
-      <div class="panel">Productos más vendidos</div>
-      <div class="panel">Alertas del sistema</div>
+    <!-- SECCIÓN TIENDA: VENTAS -->
+    <section id="ventas" class="tienda" style="display:none;">
+      <div class="contenedorproduct">
+
+        <h2>Catálogo de Productos</h2>
+
+        <div class="productos-grid">
+
+          <div class="producto-item">
+            <div class="img-placeholder"></div>
+            <p>Producto 1 – Precio: $$$</p>
+            <label>Cantidad:
+              <input type="number" min="0">
+            </label>
+          </div>
+
+          <div class="producto-item">
+            <div class="img-placeholder"></div>
+            <p>Producto 2 – Precio: $$$</p>
+            <label>Cantidad:
+              <input type="number" min="0">
+            </label>
+          </div>
+
+          <div class="producto-item">
+            <div class="img-placeholder"></div>
+            <p>Producto 3 – Precio: $$$</p>
+            <label>Cantidad:
+              <input type="number" min="0">
+            </label>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Otras secciones vacías listas para tu contenido -->
+    <section id="productos" style="display:none;">
+      <h2>Productos</h2>
+    </section>
+
+    <section id="configuracion" style="display:none;">
+      <h2>Configuración</h2>
+        <ul class="config-list">
+        <li class="configli"><button class="config-btn" id="logoutBtn"><span class="icon">⚡</span> Cerrar sesión</button></li>
+        <li class="configli"><button class="config-btn" id="darkModeBtn"><span class="icon">🌙</span> Modo tema oscuro</button></li>
+        <li class="configli"><button class="config-btn" id="lightModeBtn"><span class="icon">☀️</span> Modo tema claro</button></li>
+        <li class="configli"><button class="config-btn" id="recoverBtn"><span class="icon">🔑</span> Recuperación de cuenta</button></li>
+        <li class="configli"><button class="config-btn" id="deleteBtn"><span class="icon">🗑️</span> Borrar cuenta</button></li>
+        <li class="configli"><button class="config-btn" id="reportBtn"><span class="icon">🐞</span> Reportar error</button></li>
+      </ul>
+
+      <div id="reportForm" class="report-form" aria-hidden="true">
+        <h3>Reportar Error</h3>
+        <textarea id="reportText" placeholder="Describe el error..."></textarea>
+        <div>
+          <button class="send" id="sendReport">Enviar</button>
+          <button class="config-btn" id="cancelReport" style="display:inline-block;margin-left:.6rem">Cancelar</button>
+        </div>
+      </div>
     </section>
   </main>
+
+  <!-- SCRIPT DE CONTROL DE SECCIONES -->
+  
+  <script>
+    // ---------- Secciones (respetando display original) ----------
+    const links = document.querySelectorAll('.menu a');
+    const sections = document.querySelectorAll('main section');
+
+    sections.forEach(sec => {
+      const cs = getComputedStyle(sec).display;
+      // si el CSS lo oculta por defecto, le damos fallback 'block' para restaurarlo luego
+      sec.dataset.originalDisplay = (cs === 'none') ? 'block' : cs;
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        sections.forEach(sec => sec.style.display = 'none');
+        target.style.display = target.dataset.originalDisplay;
+        // opcional: foco al comienzo del target para accesibilidad
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // ---------- Tema (almacena preferencia en localStorage) ----------
+    const darkModeBtn = document.getElementById('darkModeBtn');
+    const lightModeBtn = document.getElementById('lightModeBtn');
+
+    function applyTheme(name){
+      if (name === 'dark'){
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // inicializar desde storage o preferencia del sistema
+    const saved = localStorage.getItem('theme');
+    if (saved) applyTheme(saved);
+    else {
+      // si el usuario tiene preferencia del sistema, aplicarla
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    darkModeBtn?.addEventListener('click', () => applyTheme('dark'));
+    lightModeBtn?.addEventListener('click', () => applyTheme('light'));
+
+    // ---------- Reporte de errores: abrir/cerrar formulario y "enviar" (simulado) ----------
+    const reportBtn = document.getElementById('reportBtn');
+    const reportForm = document.getElementById('reportForm');
+    const sendReport = document.getElementById('sendReport');
+    const cancelReport = document.getElementById('cancelReport');
+    const reportText = document.getElementById('reportText');
+
+    reportBtn?.addEventListener('click', () => {
+      if (reportForm.style.display === 'block') {
+        reportForm.style.display = 'none';
+        reportForm.setAttribute('aria-hidden', 'true');
+      } else {
+        reportForm.style.display = 'block';
+        reportForm.setAttribute('aria-hidden', 'false');
+        reportText.focus();
+      }
+    });
+
+    cancelReport?.addEventListener('click', () => {
+      reportForm.style.display = 'none';
+      reportForm.setAttribute('aria-hidden', 'true');
+    });
+
+    sendReport?.addEventListener('click', () => {
+      const text = reportText.value.trim();
+      if (!text) {
+        alert('Por favor describe el error antes de enviar.');
+        reportText.focus();
+        return;
+      }
+      // Aquí sólo simulamos envío — sustituir por fetch/ajax cuando tengas endpoint
+      alert('Reporte enviado. Gracias.');
+      reportText.value = '';
+      reportForm.style.display = 'none';
+      reportForm.setAttribute('aria-hidden', 'true');
+    });
+
+    // ---------- Acciones demo (Cerrar sesión, borrar cuenta, recuperar) ----------
+    document.getElementById('logoutBtn')?.addEventListener('click', () => {
+      // aquí añadir lógica real de cierre de sesión
+      if (confirm('¿Cerrar sesión?')) {
+        alert('Sesión cerrada (simulación).');
+      }
+    });
+
+    document.getElementById('deleteBtn')?.addEventListener('click', () => {
+      if (confirm('¿Confirmas borrar tu cuenta? Esta acción es irreversible.')) {
+        alert('Cuenta borrada (simulación).');
+      }
+    });
+
+    document.getElementById('recoverBtn')?.addEventListener('click', () => {
+      // abrir modal o iniciar flujo de recuperación; simulamos:
+      alert('Iniciando proceso de recuperación (simulación).');
+    });
+  </script>
 </body>
 </html>
-
-<!-- styles.css -->
-
