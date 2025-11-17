@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #ffffff;
+    background: #2ba0ff;
     z-index: 9999;
     transition: opacity 0.4s ease;
 }
@@ -21,10 +21,10 @@
 .spinner {
     width: 60px;
     height: 60px;
-    border: 6px solid #ddd;
-    border-top-color: #3498db;
+    border: 6px solid #00ffaa;
+    border-top-color: #866cc4;
     border-radius: 50%;
-    animation: spin 0.9s linear infinite;
+    animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
@@ -56,7 +56,7 @@ body {
     width: 450px;     /* Mismo valor */
     height: 450px;    /* Mismo valor → forma circular */
 
-    background: #d7d7d7;
+    background-color: #3498db;
     padding: 40px;
     border-radius: 50%;
     display: flex;
@@ -64,12 +64,21 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    transition: .7s ease-in-out;
 }
 
 /* Texto */
 .sesion h1 {
-    color: #0c0d48;
+    color: #d5d6ff;
     font-size: 2.2rem;
     margin: 10px 0;
     font-weight: 700;
+    transition: .6s ease-in-out ;
+}
+
+.icono{
+    width: 140px;
+    height: 140px;
+    border-radius: 100%;
+    transition: .6s ease-out;
 }

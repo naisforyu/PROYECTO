@@ -4,5 +4,5 @@
 
         setTimeout(() => {
             loader.style.display = "none";
-        }, 500);
+        }, 800);
     });

@@ -76,9 +76,10 @@ body {
   height: 100vh;
   background: var(--sidebar-bg);
   padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 2rem;
+  position: fixed;
+  padding-bottom: 3rem;
 }
 
 .sidebar .logo {
@@ -96,7 +97,12 @@ body {
   border-radius: 8px;
   transition: 0.3s;
 }
-
+.sidebar .menu{
+  position: absolute;
+  top: 60px;
+  left: 36px;
+  
+}
 .sidebar .menu a:hover {
   background: #2c3a47;
   color: #fff;
@@ -200,7 +206,7 @@ body {
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
  :root.dark {
---bg: #0f1115;
+--bg: #161920;
 --sidebar-bg: #0b0c0f;
 --sidebar-text: #e5e9f0;
 --text: #e5e9f0;
