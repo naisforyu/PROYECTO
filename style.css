@@ -17,7 +17,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #ffffff;
+    background: #2ba0ff;
     z-index: 9999;
     transition: opacity 0.4s ease;
 }
@@ -30,12 +30,11 @@ body{
 .spinner {
     width: 60px;
     height: 60px;
-    border: 6px solid #ddd;
-    border-top-color: #3498db;
+    border: 6px solid #00ffaa;
+    border-top-color: #866cc4;
     border-radius: 50%;
-    animation: spin 0.9s linear infinite;
+    animation: spin 1.5s linear infinite;
 }
-
 @keyframes spin {
     to {
         transform: rotate(360deg);
