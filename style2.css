@@ -151,6 +151,7 @@ body {
 
 .card:hover, .chart:hover, .table:hover, .panel:hover {
   transform: translateY(-3px);
+  transform: scale(1.1);
   box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
 
@@ -346,4 +347,8 @@ border: 1px solid #aaa;
       padding: .5rem .8rem;
       border-radius: 8px;
       cursor: pointer;
+    }
+
+    .tuto{
+      text-decoration: none;
     }

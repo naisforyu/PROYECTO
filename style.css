@@ -5,13 +5,13 @@ body{
     justify-content: center;
     min-height: 100hv;
     font-family: sans-serif;
-    background: linear-gradient(135deg,#ffec99,#fc0,#f90);
+    background: linear-gradient(135deg,#99a8ff,rgb(55, 53, 224),rgb(0, 47, 255));
 }
 .main{
     width: 350px;
     height: 350px;
     overflow: hidden;
-    background: linear-gradient(135deg,#fec9,#fc0,#f90);
+    background: linear-gradient(135deg,#fec9,rgb(47, 0, 255),rgb(25, 0, 255));
     border-radius: 10px;
     box-shadow:  5px 20px 50px rgba(0, 0, 0,0.5);
     margin-top: 90px;
@@ -27,7 +27,7 @@ body{
     height: 100%;
 }
 label{
-    color: #7b5400;
+    color: #f8e8c6;
     font-size: 2.3em;
     justify-content: center;
     display: flex;
@@ -66,8 +66,8 @@ button{
     margin: 10px auto;
     justify-content: center;
     display: block;
-    color: black;
-    background: linear-gradient(135deg,#f8bd51,#d89b3f);
+    color: white;
+    background: linear-gradient(135deg,#002ca3,#003ce0);
     font-size: 1em;
     font-weight: bold;
     margin-top: 0px;
@@ -78,7 +78,7 @@ button{
     cursor: pointer;
 }
 button:hover{
-    background: linear-gradient(135deg,#f90,#b35a00);
+    background: linear-gradient(135deg,rgb(31, 0, 141),#130270);
     transform: scale(1.05);
 }
 
@@ -93,25 +93,28 @@ button:hover{
 
 
 .login label{
-    color: #f90;
+    color: rgb(0, 26, 255);
     transform: scale(0.5);
 }
-
+.login label:hover{
+    color: black;
+    transform: scale(1.1);
+}
 #chk:checked ~ .login {
-    transform: translateY(-256px);
+    transform: translateY(-259px);
 }
 
 #chk:checked ~ .login label{
     transform: scale(1);
 }
 #chk:checked ~ .signup label{
-    transform: scale(0.5);
+    transform: scale(05);
 }
 h1{
     font-size: 40px;
     position: absolute;
     padding-right: 0px;
-    color: #7b5400;
+    color: #f8f3e7;
 }
 
 .Google{
